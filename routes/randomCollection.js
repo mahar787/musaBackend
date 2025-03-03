@@ -7,22 +7,26 @@ const Product = require("../models/product.model.js");
 router.get("/", async (req, res) => {
   try {
     // Random aik collection uthao
-    const randomCollection = await Collection.aggregate([
-      { $sample: { size: 1 } },
+    const randomCollections = await Collection.aggregate([
+      { $sample: { size: 3 } },
     ]);
 
     // Agar collection nahi mili toh error bhejo
-    if (!randomCollection.length) {
+    if (!randomCollections.length) {
       return res.status(404).json({ message: "No collections found" });
     }
-
-    const collection = randomCollection[0];
-
-    // Uss collection se related products fetch karo
-    const products = await Product.find({ parentCollection: collection._id });
+    // Har collection ke products fetch karne ka promise banao
+    const collectionsWithProducts = await Promise.all(
+      randomCollections.map(async (collection) => {
+        const products = await Product.find({
+          parentCollection: collection._id,
+        });
+        return { collection, products };
+      })
+    );
 
     // Response frontend ko bhejo
-    res.json({ collection, products });
+    res.status(200).json({ data: collectionsWithProducts });
   } catch (error) {
     console.error("Error fetching random collection:", error);
     res.status(500).json({ message: "Server error" });

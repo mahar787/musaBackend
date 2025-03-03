@@ -24,6 +24,8 @@ const getAllProducts = require("./routes/getAllProducts.js");
 const getSpecificProduct = require("./routes/getSpecificProduct.js");
 const updateProduct = require("./routes/updateProduct.js");
 const search = require("./routes/search.js");
+const addPayment = require("./routes/addPayment.js");
+const getAllPayments = require("./routes/getAllPayments.js");
 //routes
 // route registration
 app.use("/api/addCollection", addCollection);
@@ -42,6 +44,8 @@ app.use("/api/getAllProducts", getAllProducts);
 app.use("/api/getSpecificProduct", getSpecificProduct);
 app.use("/api/updateProduct", updateProduct);
 app.use("/api/search", search);
+app.use("/api/addPayment", addPayment);
+app.use("/api/getAllPayments", getAllPayments);
 // route registration
 
 app.listen(process.env.PORT, () => {
