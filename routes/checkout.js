@@ -8,8 +8,6 @@ const OrderItem = require("../models/orderItem.model.js");
 router.post("/", async (req, res) => {
   try {
     const data = req.body;
-    console.log(data);
-    console.log(data.data.cartItems[0]);
 
     let ids = [];
 
@@ -19,8 +17,8 @@ router.post("/", async (req, res) => {
         name: item.name,
         quantity: item.quantity,
         price: item.price,
-        selectedColors: item.sizes,
-        selectedSizes: item.colors,
+        // selectedColors: item.sizes,
+        // selectedSizes: item.colors,
       });
 
       let newSavedOrderItem = await newOrderItem.save(); // Await the save operation

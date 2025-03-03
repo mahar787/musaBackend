@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 router.post("/", async (req, res) => {
   try {
     const { ids } = req.body; // Receiving product IDs from frontend
-    console.log(req.body);
 
     if (!ids || !Array.isArray(ids)) {
       return res.status(400).json({ message: "Invalid product IDs array" });

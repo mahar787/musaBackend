@@ -22,8 +22,6 @@ router.post("/", upload.array("files", 10), async (req, res) => {
     const {
       name,
       price,
-      sizes,
-      colors,
       materials,
       descriptionPoints,
       caringInstructions,
@@ -70,8 +68,8 @@ router.post("/", upload.array("files", 10), async (req, res) => {
     const product = new Product({
       name,
       price: Number(price) || 0, // ✅ Ensure price is a number
-      sizes: toArray(sizes),
-      colors: toArray(colors),
+      // sizes: toArray(sizes),
+      // colors: toArray(colors),
       materials: toArray(materials),
       descriptionPoints: safeParse(descriptionPoints),
       caringInstructions: safeParse(caringInstructions),

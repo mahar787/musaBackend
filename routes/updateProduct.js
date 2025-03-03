@@ -22,8 +22,8 @@ router.post("/", upload.array("files", 10), async (req, res) => {
       productId,
       name,
       price,
-      sizes,
-      colors,
+      // sizes,
+      // colors,
       materials,
       descriptionPoints,
       caringInstructions,
@@ -39,12 +39,12 @@ router.post("/", upload.array("files", 10), async (req, res) => {
     if (!product) return res.status(404).json({ message: "Product not found" });
 
     // Convert values
-    const updatedSizes = sizes
-      ? sizes.split(",").map((s) => s.trim())
-      : product.sizes;
-    const updatedColors = colors
-      ? colors.split(",").map((c) => c.trim())
-      : product.colors;
+    // const updatedSizes = sizes
+    //   ? sizes.split(",").map((s) => s.trim())
+    //   : product.sizes;
+    // const updatedColors = colors
+    //   ? colors.split(",").map((c) => c.trim())
+    //   : product.colors;
     const updatedMaterials = materials
       ? materials.split(",").map((m) => m.trim())
       : product.materials;
@@ -100,8 +100,8 @@ router.post("/", upload.array("files", 10), async (req, res) => {
     // Update product fields
     product.name = name || product.name;
     product.price = price || product.price;
-    product.sizes = updatedSizes;
-    product.colors = updatedColors;
+    // product.sizes = updatedSizes;
+    // product.colors = updatedColors;
     product.materials = updatedMaterials;
     product.descriptionPoints = updatedDescPoints;
     product.caringInstructions = updatedCaringInstructions;
