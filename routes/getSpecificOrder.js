@@ -37,8 +37,6 @@ router.post("/", async (req, res) => {
       name: item.orderItemId.name,
       price: item.orderItemId.price,
       quantity: item.orderItemId.quantity,
-      selectedSizes: item.orderItemId.selectedSizes,
-      selectedColors: item.orderItemId.selectedColors,
       product: item.orderItemId.productId, // Yeh poori product details bhej raha hai
     }));
 
