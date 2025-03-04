@@ -5,9 +5,9 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "5.5",
     "mongoose": "^8.11.0",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.9",
     "stripe": "^17.7.0",
     "uuid": "^11.1.0"
   },
@@ -15,7 +15,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Ahmad",
   "license": "ISC",

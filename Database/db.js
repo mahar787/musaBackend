@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+
 dotenv.config();
-// const DBCON = async function dbConnect() {
+
 async function DBCON() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    });
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("MongoDB Connected Successfully!");
   } catch (error) {
-    console.log("Database Connection Problem !", error);
-    process.exit();
+    console.error("Database Connection Problem!", error);
+    process.exit(1); // Exit process if DB connection fails
   }
 }
+
 module.exports = DBCON;
